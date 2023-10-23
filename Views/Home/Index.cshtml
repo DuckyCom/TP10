@@ -2,4 +2,38 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>TP XX - Index</h1>
+<script>
+function MostrarTemporadas(IdS) {
+    $.ajax({
+        type: 'POST',
+        dataType: 'JSON',
+        url: '/Home/VerDetallesTemporadas',
+        data: { IdSerie: IdS },
+        success: function (response) {
+            // Suponiendo que response es un objeto JSON que contiene datos de temporadas
+            for (const temporada of response) {
+                $("#TituloDeLaTemporada").html(temporada.TituloTemporada);
+                $("#NumeroTemporada").html(temporada.NumeroTemporada);
+            }
+        }
+    });
+}
+
+function MostrarActores(IdS) {
+    $.ajax({
+        type: 'POST',
+        dataType: 'JSON',
+        url: '/Home/VerDetallesActores',
+        data: { IdSerie: IdS },
+        success: function (response) {
+            for (const actor of response) {
+                $("#NombreActor").html(actor.Nombre);
+            }
+        }
+    });
+}
+
+
+</script>
+
+<h1>TP 10 - Index</h1>
