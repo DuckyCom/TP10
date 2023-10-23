@@ -10,7 +10,6 @@ function MostrarTemporadas(IdS) {
         url: '/Home/VerDetallesTemporadas',
         data: { IdSerie: IdS },
         success: function (response) {
-            // Suponiendo que response es un objeto JSON que contiene datos de temporadas
             for (const temporada of response) {
                 $("#TituloDeLaTemporada").html(temporada.TituloTemporada);
                 $("#NumeroTemporada").html(temporada.NumeroTemporada);

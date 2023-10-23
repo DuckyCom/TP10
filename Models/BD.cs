@@ -6,11 +6,11 @@ using Dapper;
 //server = . para que se conecte al localhost
 
 
-namespace TP_09.Models
+namespace Tp10.Models
 {
     
 public class BD{
-    private static string _connectionString = @"Server=.; Database=BD; Trusted_Connection=True;"; 
+    private static string _connectionString = @"Server=.; Database=BDSeries; Trusted_Connection=True;"; 
 
 
      public static List<Series> CargarSeries(){
