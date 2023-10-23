@@ -7,12 +7,12 @@ function MostrarTemporadas(IdS) {
     $.ajax({
         type: 'POST',
         dataType: 'JSON',
-        url: '/Home/VerDetallesTemporadas',
+        url: '/Home/Ver', //DetalleTemporadas
         data: { IdSerie: IdS },
         success: function (response) {
             for (const temporada of response) {
-                $("#TituloDeLaTemporada").html(temporada.TituloTemporada);
-                $("#NumeroTemporada").html(temporada.NumeroTemporada);
+                $("#")/*ID del div titulo temporada*/.html(temporada.TituloTemporada);
+                $("#")/*ID del div numero temporada*/.html(temporada.NumeroTemporada);
             }
         }
     });
@@ -22,11 +22,11 @@ function MostrarActores(IdS) {
     $.ajax({
         type: 'POST',
         dataType: 'JSON',
-        url: '/Home/VerDetallesActores',
+        url: '/Home/', //DetalleActores
         data: { IdSerie: IdS },
         success: function (response) {
             for (const actor of response) {
-                $("#NombreActor").html(actor.Nombre);
+                $("#")/*ID del div Nombre actor*/.html(actor.Nombre);
             }
         }
     });
