@@ -9,13 +9,20 @@ public class HomeController : Controller
         ViewBag.ListaSeries = BD.CargarSeries();
         return View();
     }
+    
+    public Series VerDetallesSerie(int IdSerie){
+
+        return BD.VerInfoSerie(IdSerie);
+    }
 
     //tienen que devolver listas no acciones
-    // public IActionResult VerDetallesActores(int IdActor){
-    //     return BD.VerActores(IdActor);
-    // }
+    public List<Actores> VerDetallesActores(int IdSerie){ //hacer un for each para recorrer los actores
+        return BD.VerActores(IdSerie);
+    }
     
-    // public IActionResult VerDetallesTemporadas(int IdTemporada){
-    //     return BD.VerTemporadas(IdTemporada);
-    // }
+    public List<Temporadas> VerDetallesTemporadas(int IdSerie){
+        return BD.VerTemporadas(IdSerie);
+    }
+
+
 }

@@ -2,37 +2,37 @@
     ViewData["Title"] = "Index";
 }
 
-<script>
-function MostrarTemporadas(IdS) {
-    $.ajax({
-        type: 'POST',
-        dataType: 'JSON',
-        url: '/Home/Ver', //DetalleTemporadas
-        data: { IdSerie: IdS },
-        success: function (response) {
-            for (const temporada of response) {
-                $("#")/*ID del div titulo temporada*/.html(temporada.TituloTemporada);
-                $("#")/*ID del div numero temporada*/.html(temporada.NumeroTemporada);
-            }
-        }
-    });
-}
 
-function MostrarActores(IdS) {
-    $.ajax({
-        type: 'POST',
-        dataType: 'JSON',
-        url: '/Home/', //DetalleActores
-        data: { IdSerie: IdS },
-        success: function (response) {
-            for (const actor of response) {
-                $("#")/*ID del div Nombre actor*/.html(actor.Nombre);
-            }
-        }
-    });
-}
-
-
-</script>
 
 <h1>TP 10 - Index</h1>
+
+@foreach(Series s in ViewBag.ListaSeries){
+    <div class="card" style="width: 18rem;">
+        <img src="@s.ImagenSerie" class="card-img-top" alt="Imagen Serie">
+        <div class="card-body">
+        <h5 class="card-title">@s.Nombre</h5>
+        <p class="card-text">@s.Sinopsis</p>
+        <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalSerie" onclick="MostrarActores(@s.IdSerie, '@s.Nombre')">Ver Actores</a>
+        <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalSerie" onclick="MostrarTemporadas(@s.IdSerie, '@s.Nombre' )">Ver Temporadas</a>
+        <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalSerie" onclick="MostrarSerie(@s.IdSerie, '@s.Nombre')">Ver Mas Info Serie</a>
+        </div>
+    </div>
+}
+
+<!-- Modal -->
+  <div class="modal fade" id="ModalSerie" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+        <h2 class="modal-title" id="Titulo">Modal title</h2> @*//ID "el titulo dentro del modal"*@
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" id="Cuerpo"> @*//ID 2 "el contenido del modal"*@
+        
+        </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Salir</button>
+      </div>
+    </div>
+  </div>
+</div>
